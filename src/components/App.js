@@ -14,7 +14,7 @@ function App() {
 	}, []);
 
 	function selectPizza(pizzaObj) {
-		setSelectedPizza(pizzaObj);
+		return setSelectedPizza(pizzaObj);
 	}
 
 	return (

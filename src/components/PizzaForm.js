@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function PizzaForm({ selectedPizza }) {
 	const [topping, setTopping] = useState('');
 	const [size, setSize] = useState('');
 	const [vegetarian, setVegetarian] = useState(false);
+
+	useEffect(() => {
+		setTopping(selectedPizza.topping);
+		setSize(selectedPizza.size);
+		setVegetarian(selectedPizza.vegetarian);
+	}, [selectedPizza]);
 
 	return (
 		<form onSubmit={null /*handle that submit*/}>
@@ -36,6 +42,8 @@ function PizzaForm({ selectedPizza }) {
 							type="radio"
 							name="vegetarian"
 							value="Vegetarian"
+							onClick={() => setVegetarian(true)}
+							checked={true}
 						/>
 						<label className="form-check-label">Vegetarian</label>
 					</div>
@@ -45,6 +53,8 @@ function PizzaForm({ selectedPizza }) {
 							type="radio"
 							name="vegetarian"
 							value="Not Vegetarian"
+							onChange={() => setVegetarian(false)}
+							checked={true}
 						/>
 						<label className="form-check-label">Not Vegetarian</label>
 					</div>
